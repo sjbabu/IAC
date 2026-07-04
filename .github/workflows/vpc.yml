@@ -1,0 +1,24 @@
+name: buid and deploy using checkout
+on: workflow_dispatch
+env:
+  AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v7
+    - name: check files
+      run: |
+        ls -l
+    - name: setup terraform
+      uses: hashicorp/setup-terraform@v4
+    - name: connect to aws
+      run: |
+        export AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}
+        export AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}
+        terraform init
+        terraform apply -auto-approve 
+
+      
