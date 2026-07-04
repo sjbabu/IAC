@@ -1,0 +1,9 @@
+name: Testing token
+on: workflow_dispatch
+jobs:
+  testtoken:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print token
+      run: |
+        echo "${{ secrets.GITHUB_TOKEN }}"
