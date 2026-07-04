@@ -7,8 +7,8 @@ jobs:
     - name: print token
       run: |
         echo "${{ secrets.GITHUB_TOKEN }}"
-    - name: clone other repo
-      uses: actions/checkout@v7
+    - name: Checkout Other Repository
+      uses: actions/checkout@v4
       with:
-        repository: sjbabu/cicd
-        token: ${{ secrets.MY_CICD_TOKEN }}
+          repository: sjbabu/cicd
+          token: ${{ secrets.MY_CICD_TOKEN }}
