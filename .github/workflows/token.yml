@@ -1,19 +1,32 @@
-name: Testing token
-on: workflow_dispatch
+name: Testing Token
+
+on:
+  workflow_dispatch:
+
 jobs:
   testtoken:
     runs-on: ubuntu-latest
+
     steps:
-    - name: print token
-      run: |
-        echo "${{ secrets.GITHUB_TOKEN }}"
-    - name: Checkout Other Repository testtoken
-      uses: actions/checkout@v7
-      with:
+      - name: Checkout Token Repository
+        uses: actions/checkout@v4
+        with:
+          repository: sjbabu/token
+          ref: main
+          token: ${{ secrets.TEST_TOKEN }}
+          path: token
+
+      - name: Checkout CICD Repository
+        uses: actions/checkout@v4
+        with:
           repository: sjbabu/cicd
           ref: main
           token: ${{ secrets.TEST_TOKEN }}
-    - name: os coammnds
-      run: |
-        ls -a
-        pwd
+          path: cicd
+
+      - name: Verify
+        run: |
+          pwd
+          ls -la
+          ls -la token
+          ls -la cicd
