@@ -13,7 +13,7 @@ jobs:
         with:
           repository: sjbabu/token
           ref: main
-          token: ${{ secrets.TEST_TOKEN }}
+          token: ${{ secrets.all_access }}
           path: token
 
       - name: Checkout CICD Repository
@@ -21,7 +21,7 @@ jobs:
         with:
           repository: sjbabu/cicd
           ref: main
-          token: ${{ secrets.TEST_TOKEN }}
+          token: ${{ secrets.all_access }}
           path: cicd
 
       - name: Verify
