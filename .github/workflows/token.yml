@@ -10,8 +10,13 @@ jobs:
     - name: Checkout Other Repository
       uses: actions/checkout@v7
       with:
+          repository: sjbabu/token
+          token: ${{ secrets.TEST_TOKEN }}
+    - name: Checkout Other Repository testtoken
+      uses: actions/checkout@v7
+      with:
           repository: sjbabu/cicd
-          token: ${{ secrets.MY_CICD_TOKEN }}
+          token: ${{ secrets.TEST_TOKEN }}
     - name: os coammnds
       run: |
         ls -a
