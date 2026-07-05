@@ -7,12 +7,6 @@ jobs:
     - name: print token
       run: |
         echo "${{ secrets.GITHUB_TOKEN }}"
-    - name: Checkout Other Repository
-      uses: actions/checkout@v7
-      with:
-          repository: sjbabu/token
-          ref: main
-          token: ${{ secrets.TEST_TOKEN }}
     - name: Checkout Other Repository testtoken
       uses: actions/checkout@v7
       with:
